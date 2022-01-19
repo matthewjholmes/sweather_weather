@@ -30,7 +30,9 @@ Run bundle exec figaro install then add your API keys to the config/application.
 Run rails s and navigate to localhost:3000 to consume Whether, Sweater's API endpoints
 
 ### Endpoints
-Retrieve weather for a city
+
+_Retrieve weather for a city._
+
 Request GET /api/v1/forecast?location=<location>
 
 Sample Request:
@@ -158,119 +160,131 @@ Sample Response:
     }
 }
   ```
+  
 Background image for the city
 Request GET /api/v1/backgrounds?location=<location>
 
 Sample Request:
 
-GET /api/v1/forecast?location=bend,or
+`GET /api/v1/backgrounds?location=denver,co`
 
 Sample Response:
 
+  ```
 {
-    "data": {
-        "id": null,
-        "type": "image",
-        "attributes": {
-            "location": "bend,or",
-            "description": "Horseshoe Bend during daytime",
-            "image_urls": {
-                "raw": "https://images.unsplash.com/photo-1483086451546-5a971a934123?ixid=MnwyNTI1NzN8MHwxfHNlYXJjaHwxfHxiZW5kJTJDb3J8ZW58MHx8fHwxNjMwODYxNTAy&ixlib=rb-1.2.1",
-                "full": "https://images.unsplash.com/photo-1483086451546-5a971a934123?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNTI1NzN8MHwxfHNlYXJjaHwxfHxiZW5kJTJDb3J8ZW58MHx8fHwxNjMwODYxNTAy&ixlib=rb-1.2.1&q=85",
-                "regular": "https://images.unsplash.com/photo-1483086451546-5a971a934123?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTI1NzN8MHwxfHNlYXJjaHwxfHxiZW5kJTJDb3J8ZW58MHx8fHwxNjMwODYxNTAy&ixlib=rb-1.2.1&q=80&w=1080",
-                "small": "https://images.unsplash.com/photo-1483086451546-5a971a934123?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTI1NzN8MHwxfHNlYXJjaHwxfHxiZW5kJTJDb3J8ZW58MHx8fHwxNjMwODYxNTAy&ixlib=rb-1.2.1&q=80&w=400",
-                "thumb": "https://images.unsplash.com/photo-1483086451546-5a971a934123?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTI1NzN8MHwxfHNlYXJjaHwxfHxiZW5kJTJDb3J8ZW58MHx8fHwxNjMwODYxNTAy&ixlib=rb-1.2.1&q=80&w=200"
-            },
-            "credit": {
-                "name": "Des Récits",
-                "self": "https://api.unsplash.com/users/desrecits",
-                "html": "https://unsplash.com/@desrecits",
-                "photos": "https://api.unsplash.com/users/desrecits/photos",
-                "portfolio": "https://api.unsplash.com/users/desrecits/portfolio"
-            }
+  "data": {
+    "type": "image",
+    "id": null,
+    "attributes": {
+      "image": {
+        "location": "denver,co",
+        "image_url": "https://pixabay.com/get/54e6d4444f50a814f1dc8460962930761c38d6ed534c704c7c2878dd954dc451_640.jpg",
+        "credit": {
+          "source": "pixabay.com",
+          "author": "quinntheislander",
+          "logo": "https://pixabay.com/static/img/logo_square.png"
         }
+      }
     }
+  }
 }
+  ```
+  
 User Registration
 Request POST /api/v1/users
 
-Sample Request:
+Sample Request Body:
 
-{
-  "email": "missfrizbeethemouse@pets.com",
-  "password": "***************ries",
-  "password_confirmation":  "***************ries"
+```
+  {
+  "email": "whatever@example.com",
+  "password": "password",
+  "password_confirmation": "password"
 }
+  ```
+  
 Sample Response:
 
+  ```
 {
-    "data": {
-        "id": "10",
-        "type": "users",
-        "attributes": {
-            "email": "missfrizbeethemouse@pets.com",
-            "api_key": "****************************fO9x"
-        }
+  "data": {
+    "type": "users",
+    "id": "1",
+    "attributes": {
+      "email": "whatever@example.com",
+      "api_key": "jgn983hy48thw9begh98h4539h4"
     }
+  }
 }
+  ```
 Login
 Request POST /api/v1/sessions
 
-Sample Request:
-
-{
-  "email": "tedthedog@pets.com",
-  "password": "**************wels"
+Sample Request Body:
+  
+```
+  {
+  "email": "whatever@example.com",
+  "password": "password"
 }
+  
+ ```
+  
 Sample Response:
 
+  ```
 {
-    "data": {
-        "id": "3",
-        "type": "users",
-        "attributes": {
-            "email": "tedthedog@pets.com",
-            "api_key": "****************************RPhR"
-        }
+  "data": {
+    "type": "users",
+    "id": "1",
+    "attributes": {
+      "email": "whatever@example.com",
+      "api_key": "jgn983hy48thw9begh98h4539h4"
     }
+  }
 }
+  ```
+  
 Road Trip
+  
 Request POST /api/v1/road_trip
 
-Sample Request:
+Sample Request Body:
 
-{
+```
+  {
   "origin": "Denver,CO",
-  "destination": "Bend,OR",
-  "api_key": "****************************dXIp"
+  "destination": "Pueblo,CO",
+  "api_key": "jgn983hy48thw9begh98h4539h4"
 }
+  ```
+  
 Sample Response:
 
-{
-    "data": {
-        "id": null,
-        "type": "roadtrip",
-        "attributes": {
-            "start_city": "Denver,CO",
-            "end_city": "Bend,OR",
-            "travel_time": "16:13:11",
-            "weather_at_eta": {
-                "temperature": 55.51,
-                "conditions": "overcast clouds"
-            }
-        }
+```
+  {
+  "data": {
+    "id": null,
+    "type": "roadtrip",
+    "attributes": {
+      "start_city": "Denver, CO",
+      "end_city": "Estes Park, CO",
+      "travel_time": "2 hours, 13 minutes"
+      "weather_at_eta": {
+        "temperature": 59.4,
+        "conditions": "partly cloudy with a chance of meatballs"
+      }
     }
+  }
 }
-Roadmap
-See the open issues for a list of proposed features (and known issues).
+  ```
 
-Contact
-Leigh Cepriano Pulzone - Linkedin - GitHub - Email
+Contact:
+Matt Holmes
 
 Project Link
 
 Acknowledgements
-Project Board
 
 API from Open Weather
 
@@ -278,4 +292,3 @@ API from Map Quest
 
 API from Unsplash
 
-Photographer Attribution Guidelines
