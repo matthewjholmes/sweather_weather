@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :forecast, only: :index
       resources :backgrounds, only: :index
       resources :road_trip, only: :index
-      resources :session, only: :create
+      resources :sessions, only: :create
       resources :users, only: :create
     end
   end

@@ -9,8 +9,8 @@ class MapquestService
 
   def self.get_directions(locations)
     response = conn.get('/directions/v2/route') do |p|
-      p.params['from'] = locations[:origin]
-      p.params['to']   = locations[:destination]
+      p.params['from'] = locations[:params][:origin]
+      p.params['to']   = locations[:params][:destination]
     end
     parse(response)
   end

@@ -54,5 +54,11 @@ class Weather
     end
   end
 
-  # def weather_at_eta
+  def weather_at_eta(travel_seconds)
+    travel_hours = travel_seconds / 3600
+    {
+      conditions: hourly[travel_hours][:conditions],
+      temperature: hourly[travel_hours][:temperature]
+    }
+  end
 end

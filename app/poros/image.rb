@@ -8,7 +8,6 @@ class Image
 
   def image(data)
     first_image = data[:results].first
-    require "pry"; binding.pry
     {
       location: first_image[:location],
       image_url: first_image[:urls][:full],

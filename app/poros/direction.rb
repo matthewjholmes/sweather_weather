@@ -1,22 +1,22 @@
-class Directions
+class Direction
 
   attr_reader :id,
               :origin,
               :destination,
               :end_latitude,
               :end_longitude,
-              :travel_time,
+              :travel_time
               # :travel_time_seconds
 
-  def initialize(directions)
+  def initialize(data)
     @id = nil
-    @origin = origin(directions[:route][:locations].first[:adminArea5],
-                         directions[:route][:locations].first[:adminArea3])
-    @destination = destination(directions[:route][:locations].last[:adminArea5],
-                            directions[:route][:locations].last[:adminArea3])
-    @end_latitude = directions[:route][:locations].last[:displayLatLng][:lat]
-    @end_longitude = directions[:route][:locations].last[:displayLatLng][:lng]
-    @travel_time = travel_time(directions[:route][:realTime])
+    @origin = origin(data[:route][:locations].first[:adminArea5],
+                         data[:route][:locations].first[:adminArea3])
+    @destination = destination(data[:route][:locations].last[:adminArea5],
+                            data[:route][:locations].last[:adminArea3])
+    @end_latitude = data[:route][:locations].last[:displayLatLng][:lat]
+    @end_longitude = data[:route][:locations].last[:displayLatLng][:lng]
+    @travel_time = travel_time(data[:route][:realTime])
     # @travel_time_seconds = directions[:route][:realTime]
   end
 
