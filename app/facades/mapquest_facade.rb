@@ -1,5 +1,4 @@
 class MapquestFacade
-
   def self.get_coords(location)
     data = MapquestService.get_coords(location)
     Location.new(data)

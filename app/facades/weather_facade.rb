@@ -1,5 +1,4 @@
 class WeatherFacade
-
   def self.get_weather(location)
     coords = MapquestFacade.get_coords(location)
     # Handle invalid location, such as return coords if coords != something
@@ -8,5 +7,4 @@ class WeatherFacade
     # require "pry"; binding.pry
     Weather.new(weather_data)
   end
-
 end

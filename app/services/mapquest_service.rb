@@ -1,5 +1,4 @@
 class MapquestService
-
   def self.get_coords(location)
     response = conn.get('/geocoding/v1/address') do |p|
       p.params['location'] = location
@@ -22,9 +21,7 @@ class MapquestService
   end
 
   def self.conn
-    Faraday.new(url: "http://www.mapquestapi.com",
-      params: { key: ENV['MAPQUEST_API_KEY'] }
-    )
+    Faraday.new(url: 'http://www.mapquestapi.com',
+                params: { key: ENV['MAPQUEST_API_KEY'] })
   end
-
 end

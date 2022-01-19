@@ -14,8 +14,6 @@ class User < ApplicationRecord
   #   api_keys.user_token
   # end
 
-  private
-
   # def generate_api_key
   #   ApiKey.create!(user: self, token: SecureRandom.hex)
   # end

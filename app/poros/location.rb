@@ -5,5 +5,4 @@ class Location
     @latitude  = data[:results].first[:locations].first[:displayLatLng][:lat]
     @longitude = data[:results].first[:locations].first[:displayLatLng][:lng]
   end
-  
 end

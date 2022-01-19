@@ -7,6 +7,7 @@ class Api::V1::RoadTripController < ApplicationController
   end
 
   private
+
   def road_trip_params
     params.permit(:origin, :destination)
   end
