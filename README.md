@@ -27,7 +27,7 @@ Run rails db:{drop,create,migrate} to set up the database
 
 Run bundle exec figaro install then add your API keys to the config/application.yml file as: OPEN_WEATHER_API_KEY for Open Weather, MAPQUEST_API_KEY for MapSuest, and UNSPLASH_ACCESS_KEY for Unsplash
 
-Run rails s and navigate to localhost:3000 to consume Whether, Sweater's API endpoints
+Run rails s and navigate to localhost:3000 to consume Sweather Weather API endpoints
 
 ### Endpoints
 
@@ -282,7 +282,6 @@ Sample Response:
 Contact:
 Matt Holmes
 
-Project Link
 
 Acknowledgements
 
