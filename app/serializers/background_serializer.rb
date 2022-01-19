@@ -1,9 +1,4 @@
 class BackgroundSerializer
-  include JSONAPI::Serializer
-
-  set_id :id
-  set_type :background
-  
+  include FastJsonapi::ObjectSerializer
   attribute :image
-
 end

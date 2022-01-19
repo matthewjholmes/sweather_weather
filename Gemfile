@@ -15,7 +15,7 @@ gem 'puma', '~> 3.11'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'jsonapi'
+gem 'fast_jsonapi'
 gem 'date'
 gem 'faraday'
 gem 'figaro'
