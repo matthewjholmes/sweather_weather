@@ -4,7 +4,7 @@ class Weather
               :daily,
               :hourly
 
-  def initialize(data)
+  def initialize(data, travel_seconds = nil)
     # require "pry"; binding.pry
     @id = nil
     @current = current_weather(data)
@@ -54,8 +54,8 @@ class Weather
     end
   end
 
-  def weather_at_eta(travel_seconds)
-    travel_hours = travel_seconds / 3600
+  def weather_at_eta(travel_time_seconds)
+    travel_hours = travel_time_seconds / 3600
     {
       conditions: hourly[travel_hours][:conditions],
       temperature: hourly[travel_hours][:temperature]

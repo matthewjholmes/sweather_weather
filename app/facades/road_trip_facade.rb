@@ -1,9 +1,8 @@
 class RoadTripFacade
-  def self.generate_road_trip(locations)
+  def self.generate_road_trip(origin, destination)
+    directions = MapquestFacade.get_directions(origin, destination)
+    forecast = WeatherFacade.get_weather(destination)
     # require "pry"; binding.pry
-    directions = MapquestFacade.get_directions(locations)
-    forecast = WeatherFacade.get_weather(lat: directions.end_latitude, lon: directions.end_longitude)
-    # forecast needs to be in the future (based on eta)
     RoadTrip.new(directions, forecast)
   end
 end

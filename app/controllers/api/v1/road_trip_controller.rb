@@ -7,15 +7,15 @@ class Api::V1::RoadTripController < ApplicationController
     if user.nil?
       render json: {errors: {details: "Valid API key is required."}}, status: 401
     else
-      require "pry"; binding.pry
-      road_trip = RoadTripFacade.generate_road_trip(road_trip_params)
+      # require "pry"; binding.pry
+      road_trip = RoadTripFacade.generate_road_trip(params[:origin], params[:destination])
       render json: RoadTripSerializer.new(road_trip)
     end
   end
-
-  private
-
-  def road_trip_params
-    params.permit(:origin, :destination)
-  end
+  #
+  # private
+  #
+  # def road_trip_params
+  #   params.permit(:origin, :destination)
+  # end
 end

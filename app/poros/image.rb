@@ -3,12 +3,12 @@ class Image
 
   def initialize(data)
     @id    = nil
-    @image = image(data)
+    @image = set_image(data)
   end
 
-  def image(data)
+  def set_image(data)
     # data[:results].first[:urls][:full]
-    # require "pry"; binding.pry 
+    # require "pry"; binding.pry
     first_image = data[:results].first
     {
       location: "#{first_image[:tags][0][:title]},#{first_image[:tags][1][:title]}",

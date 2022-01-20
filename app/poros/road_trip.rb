@@ -1,19 +1,20 @@
 class RoadTrip
-  attr_reader :id, :start_city, :end_city, :travel_time, :weather_at_eta
+  attr_reader :id, :origin, :destination, :travel_time, :weather_at_eta
 
-  def initialize(directions, forecast = nil)
+  def initialize(directions, forecast)
     @id = nil
 
     if forecast.nil?
-      @start_city     = directions[:origin].sub(',', ', ')
-      @end_city       = directions[:destination].sub(',', ', ')
-      @travel_time    = 'impossible'
+      @origin = directions[:origin].sub(',', ', ')
+      @destination = directions[:destination].sub(',', ', ')
+      @travel_time = 'impossible'
       @weather_at_eta = {}
     else
-      @start_city     = directions.start_city
-      @end_city       = directions.end_city
-      @travel_time    = directions.travel_time
+      @origin = directions.origin
+      @destination = directions.destination
+      @travel_time = directions.travel_time
       @weather_at_eta = forecast.weather_at_eta(directions.travel_time_seconds)
+      # require "pry"; binding.pry
     end
   end
 end
