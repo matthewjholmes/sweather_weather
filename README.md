@@ -247,7 +247,7 @@ Sample Response:
   
 Road Trip
   
-Request POST /api/v1/road_trip
+Request GET /api/v1/road_trip
 
 Sample Request Body:
 
