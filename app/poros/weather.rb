@@ -5,7 +5,6 @@ class Weather
               :hourly
 
   def initialize(data, travel_seconds = nil)
-    # require "pry"; binding.pry
     @id = nil
     @current = current_weather(data)
     @daily = five_day_weather(data)
@@ -13,7 +12,6 @@ class Weather
   end
 
   def current_weather(data)
-    # require "pry"; binding.pry
     current = data[:current]
     {
       datetime: Time.at(current[:dt]),

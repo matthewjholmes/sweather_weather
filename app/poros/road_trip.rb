@@ -3,7 +3,6 @@ class RoadTrip
 
   def initialize(directions, forecast)
     @id = nil
-
     if forecast.nil?
       @origin = directions[:origin].sub(',', ', ')
       @destination = directions[:destination].sub(',', ', ')
