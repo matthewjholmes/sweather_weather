@@ -1,0 +1,74 @@
+
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.7.2-stretch-node
+        environment:
+          # PGHOST: 127.0.0.1
+          PGHOST: localhost
+          PGUSER: sweather_weather
+          RAILS_ENV: test
+          # REDIS_URL: redis://redis@localhost:6379
+      - image: circleci/postgres:13
+        environment:
+          POSTGRES_USER: sweather_weather
+          POSTGRES_DB: sweather_weather_test
+          POSTGRES_PASSWORD: POSTGRES_HOST_AUTH_METHOD=trust
+      - image: circleci/redis:latest
+    executor: ruby/default
+    environment:
+      key: ENV['key']
+      appid: ENV['appid']
+      api_key: ENV['api_key']
+    steps:
+      - checkout
+      # Setup the environment
+      - run: gem install bundler:2.2.15
+      - run: bundle config set --local path 'Users/matthewholmes/turing/mod_3/projects/sweather_weather' # is this supposed to start with just turing on to the right?
+      - run: bundle install --path "Users/matthewholmes/turing/mod_3/projects/sweather_weather"
+      # DB Wait
+      # - run:
+      #     name: Wait for DB
+      #     command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      # Redis Wait
+      # - run:
+      #     name: Wait for Redis
+      #     command: dockerize -wait tcp://localhost:6379 -timeout 1m
+      # Run the test suite
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:schema:load
+      - run: bundle exec rspec# version 2.1
+# jobs:
+#   build:
+#     docker:
+#       - image: alpine:3.7
+#     steps:
+#       - run:
+#           name: The First Step
+#           command: |
+#             echo 'Hello World!'
+#             echo 'This is the delivery pipeline'
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: <%= ENV['DB_POOL'] %>
+#   username: <%= ENV['DB_USERNAME'] %>
+#   password: <%= ENV['DB_PASSWORD'] %>
+#   host: <%= ENV['DB_HOST'] %>
+#   port: 5432
+#
+# development:
+#   <<: *default
+#   database: sweather_weather_development
+#
+# test:
+#   <<: *default
+#   database: sweather_weather_test
+#
+# production:
+#   <<: *default
+#   database: sweather_weather_production

@@ -11,7 +11,7 @@ describe MapquestFacade, type: :facade do
 
     describe '.get_directions' do
       it 'returns a directions object' do
-        directions = MapquestFacade.get_directions(params: { origin: 'denver,co', destination: 'lakewood,co' })
+        directions = MapquestFacade.get_directions('denver,co', 'lakewood,co')
         expect(directions).to be_a(Direction)
       end
     end

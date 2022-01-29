@@ -4,8 +4,9 @@ class MapquestFacade
     Location.new(data)
   end
 
-  def self.get_directions(locations)
-    data = MapquestService.get_directions(locations)
+  def self.get_directions(origin, destination)
+    # require "pry"; binding.pry
+    data = MapquestService.get_directions(origin, destination)
     Direction.new(data)
   end
 end
