@@ -20,10 +20,10 @@ jobs:
           POSTGRES_PASSWORD: POSTGRES_HOST_AUTH_METHOD=trust
       - image: circleci/redis:latest
     executor: ruby/default
-    environment:
-      key: ENV['key']
-      appid: ENV['appid']
-      api_key: ENV['api_key']
+    # environment:
+    #   key: ENV['key']
+    #   appid: ENV['appid']
+    #   api_key: ENV['api_key']
     steps:
       - checkout
       # Setup the environment
@@ -31,13 +31,13 @@ jobs:
       - run: bundle config set --local path 'Users/matthewholmes/turing/mod_3/projects/sweather_weather' # is this supposed to start with just turing on to the right?
       - run: bundle install --path "Users/matthewholmes/turing/mod_3/projects/sweather_weather"
       # DB Wait
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      # Redis Wait
-      - run:
-          name: Wait for Redis
-          command: dockerize -wait tcp://localhost:6379 -timeout 1m
+      # - run:
+      #     name: Wait for DB
+      #     command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      # # Redis Wait
+      # - run:
+      #     name: Wait for Redis
+      #     command: dockerize -wait tcp://localhost:6379 -timeout 1m
       # Run the test suite
       - run: bundle exec rails db:create
       - run: bundle exec rails db:schema:load
