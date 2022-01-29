@@ -1,0 +1,31 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: alpine:3.7
+    steps:
+      - run:
+          name: The First Step
+          command: |
+            echo 'Hello World!'
+            echo 'This is the delivery pipeline'
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: <%= ENV['DB_POOL'] %>
+#   username: <%= ENV['DB_USERNAME'] %>
+#   password: <%= ENV['DB_PASSWORD'] %>
+#   host: <%= ENV['DB_HOST'] %>
+#   port: 5432
+#
+# development:
+#   <<: *default
+#   database: sweather_weather_development
+#
+# test:
+#   <<: *default
+#   database: sweather_weather_test
+#
+# production:
+#   <<: *default
+#   database: sweather_weather_production
