@@ -20,10 +20,10 @@ jobs:
           POSTGRES_PASSWORD: POSTGRES_HOST_AUTH_METHOD=trust
       - image: circleci/redis:latest
     executor: ruby/default
-    # environment:
-    #   key: ENV['key']
-    #   appid: ENV['appid']
-    #   api_key: ENV['api_key']
+    environment:
+      key: ENV['key']
+      appid: ENV['appid']
+      api_key: ENV['api_key']
     steps:
       - checkout
       # Setup the environment
