@@ -25,19 +25,19 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
+# © 2022 GitHub, Inc.
+# Terms
+# Privacy
+# Security
+# Status
+# Docs
+# Contact GitHub
+# Pricing
+# API
+# Training
+# Blog
+# About
+# Loading complete
 #
 # version: 2.1
 # orbs:
